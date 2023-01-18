@@ -6,7 +6,6 @@ async function getPokemon(){
         //transformation en tableau json
         let pokemons = await promise.json();
         //je return mon tableau json pokemons
-        console.log()
         return pokemons;
     }else{
         // si error
@@ -15,7 +14,6 @@ async function getPokemon(){
 async function showPokemons(pokemons){
    const showPokemonsContainer = document.querySelector('.showPokemons');
    for(const pokemon of pokemons){
-    console.log(pokemon)
         //creation des elements
         const article = document.createElement('article');
         const h3 = document.createElement('h3');
@@ -31,7 +29,9 @@ async function showPokemons(pokemons){
         article.append(h3, img);
        showPokemonsContainer.appendChild(article);
        article.addEventListener('click', ()=>{
-            alert('toto')
+            //recuperer des infos a réutiliser
+            localStorage.setItem('pokemon', pokemon.id);
+            document.location.href="pokemon.html"; 
        })
    }
 }
